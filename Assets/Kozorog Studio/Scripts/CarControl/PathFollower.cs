@@ -22,6 +22,7 @@ public class PathFollower : MonoBehaviour
         NotRacing,
         Racing
     }
+
     #endregion
 
     #region Unity event functions

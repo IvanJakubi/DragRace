@@ -38,6 +38,7 @@ public class CarController : MonoBehaviour
     public float currentSpeed;
     public float currentNitroMeter;
     public bool isDodging = false;
+    public GearChangeSuccess gearChangeSuccess;
 
     [Header("Components")]
     public TrailRenderer skidMarkRight;
@@ -51,6 +52,14 @@ public class CarController : MonoBehaviour
     public ParticleSystem smokeLeft;
     public ParticleSystem smokeRight;
     #endregion
+
+    public enum GearChangeSuccess
+    {
+        Waiting,
+        Perfect,
+        Fail,
+        Max
+    }
 
     #region Event Messages
     public void OnDodgeLeft(EventMessage eventMessage)
@@ -135,6 +144,9 @@ public class CarController : MonoBehaviour
     public void ResetGearRaise()
     {
         _gearRaised = false;
+        SetGearChangeSuccess(GearChangeSuccess.Waiting);
+        StartCoroutine(speedometer.GearStatus());
+
     }
 
     //On LeanSwipeGearUp, activate this function
@@ -151,22 +163,24 @@ public class CarController : MonoBehaviour
             {
                 gear++;
                 _gearRaised = true;
+                SetGearChangeSuccess(GearChangeSuccess.Perfect);
             }
             else
             {
                 gear++;
                 currentSpeed = currentSpeed - (currentSpeed * loseSpeedOnGear[gear]);
                 _gearRaised = true;
+                SetGearChangeSuccess(GearChangeSuccess.Fail);
             }
         }
         
         if (gear >= 5 && _gearRaised == false)
         {
-            Debug.Log("Can't raise gear");
             _gearRaised = true;
-            StartCoroutine(speedometer.ShakeGear());
+            SetGearChangeSuccess(GearChangeSuccess.Max);
         }
 
+        StartCoroutine(speedometer.GearStatus());
         speedometer.gearText.text = currentGear;
     }
     #endregion
@@ -210,6 +224,11 @@ public class CarController : MonoBehaviour
         skidMarkLeft.emitting = true;
         smokeLeft.Play();
         smokeRight.Play();
+    }
+
+    private void SetGearChangeSuccess (GearChangeSuccess _gearChangeSuccess)
+    {
+        gearChangeSuccess = _gearChangeSuccess;
     }
     #endregion
 }

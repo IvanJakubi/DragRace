@@ -48,9 +48,23 @@ public class Speedometer : MonoBehaviour
         return nitroNormalized;
     }
 
-    public IEnumerator ShakeGear()
+    public IEnumerator GearStatus()
     {
-        iTween.ShakePosition(gearIcon, iTween.Hash("x", 3f, "time", 0.5f, "delay", 0f));
+        switch (carController.gearChangeSuccess)
+        {
+            case CarController.GearChangeSuccess.Max:
+                iTween.ShakePosition(gearIcon, iTween.Hash("x", 3f, "y", 3f, "time", 0.5f, "delay", 0f));
+                break;
+            case CarController.GearChangeSuccess.Perfect:
+                gearIcon.GetComponent<Image>().color = Color.green;
+                break;
+            case CarController.GearChangeSuccess.Fail:
+                gearIcon.GetComponent<Image>().color = Color.red;
+                break;
+            case CarController.GearChangeSuccess.Waiting:
+                gearIcon.GetComponent<Image>().color = new Color(0, 206, 211);
+                break;
+        }
 
         yield return null;
     }
