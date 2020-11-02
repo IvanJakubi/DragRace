@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 149331882101188559}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!198 &679744601
 ParticleSystem:
@@ -9651,7 +9651,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1375644776760120650}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -0.68, y: -0, z: -1.11}
+  m_LocalPosition: {x: -0.6, y: 0.21, z: -0.85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4609442125986114381}
@@ -9847,7 +9847,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 0.41960785}
+      maxColor: {r: 0.6886792, g: 0.6886792, b: 0.6886792, a: 0.56078434}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -9909,7 +9909,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 2
+      scalar: 3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -13558,7 +13558,7 @@ ParticleSystem:
         m_RotationOrder: 4
     maxLights: 20
   TrailModule:
-    enabled: 0
+    enabled: 1
     mode: 0
     ratio: 1
     lifetime:
@@ -13614,7 +13614,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    minVertexDistance: 0.2
+    minVertexDistance: 0.59
     textureMode: 0
     ribbonCount: 1
     shadowBias: 0.5
@@ -14392,6 +14392,7 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: e823cd5b5d27c0f4b8256e7c12ee3e6d, type: 2}
+  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14483,8 +14484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b957973fc075c64ea3abc00d7682e98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _usingNitro: 0
-  isDodging: 0
+  speedometer: {fileID: 0}
   acceleration:
   - 0.6
   - 0.5
@@ -14499,13 +14499,6 @@ MonoBehaviour:
   - 90
   - 150
   - 200
-  minSpeedToGear:
-  - 0.7
-  - 0.8
-  - 0.85
-  - 0.88
-  - 0.9
-  - 0.9
   loseSpeedOnGear:
   - 0.7
   - 0.6
@@ -14523,11 +14516,13 @@ MonoBehaviour:
   nitroAcceleration: 0.5
   maxNitroMeter: 10
   nitroMeterConsumption: 0.1
-  nitroMeterFill: 0.05
+  nitroMeterFill: 0.08
   gear: 0
   currentSpeed: 0
   currentNitroMeter: 0
-  distanceTraveled: 0
+  isDodging: 0
+  gearRaised: 0
+  gearChangeSuccess: 0
   skidMarkRight: {fileID: 2765923497340966567}
   skidMarkLeft: {fileID: 2962654425372649927}
   carAnimator: {fileID: 8799812618217454630}
@@ -14609,7 +14604,7 @@ Transform:
   - {fileID: 6482733158820420904}
   - {fileID: 3766172291870178583}
   m_Father: {fileID: 149331882101188559}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4406836373072354880
 GameObject:
@@ -14766,7 +14761,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4790953154283476296}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0.71, y: -0, z: -1.11}
+  m_LocalPosition: {x: 0.7900002, y: 0.20999998, z: -0.85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4609442125986114381}
@@ -14962,7 +14957,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 0.41960785}
+      maxColor: {r: 0.6886792, g: 0.6886792, b: 0.6886792, a: 0.56078434}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -15024,7 +15019,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 2
+      scalar: 3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -18673,7 +18668,7 @@ ParticleSystem:
         m_RotationOrder: 4
     maxLights: 20
   TrailModule:
-    enabled: 0
+    enabled: 1
     mode: 0
     ratio: 1
     lifetime:
@@ -18729,7 +18724,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    minVertexDistance: 0.2
+    minVertexDistance: 0.59
     textureMode: 0
     ribbonCount: 1
     shadowBias: 0.5
@@ -19507,6 +19502,7 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: e823cd5b5d27c0f4b8256e7c12ee3e6d, type: 2}
+  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -19582,7 +19578,7 @@ Transform:
   - {fileID: 5790450785815632200}
   - {fileID: 3241996023774514712}
   m_Father: {fileID: 149331882101188559}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4906491531136051614
 GameObject:
@@ -19614,7 +19610,7 @@ Transform:
   - {fileID: 5487669516089668798}
   - {fileID: 8472756044851370411}
   m_Father: {fileID: 149331882101188559}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7012602388606908043
 GameObject:
@@ -19754,12 +19750,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 149331882101188559}
-  - component: {fileID: 3379315363751181906}
-  - component: {fileID: 220424867198495809}
   - component: {fileID: 8799812618217454630}
   - component: {fileID: 2043082006}
   m_Layer: 0
-  m_Name: CarMesh
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19773,9 +19767,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7597708780066285577}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 6241542709594852161}
   - {fileID: 679744599}
   - {fileID: 1004184405832858348}
   - {fileID: 2810617448677586980}
@@ -19783,55 +19778,6 @@ Transform:
   m_Father: {fileID: 2966318103598824483}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &3379315363751181906
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7597708780066285577}
-  m_Mesh: {fileID: -222852980518370482, guid: a224fcc2a15e3be44be9b00f3a3187fb, type: 3}
---- !u!23 &220424867198495809
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7597708780066285577}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 5a06b2f55ee787944987c39b0ce42d07, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!95 &8799812618217454630
 Animator:
   serializedVersion: 3
@@ -19864,6 +19810,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CarController: {fileID: 2172237797671215549}
+--- !u!1 &7698633545945060064
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6241542709594852161}
+  m_Layer: 0
+  m_Name: Cars
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6241542709594852161
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7698633545945060064}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 149331882101188559}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8638805689429052934
 GameObject:
   m_ObjectHideFlags: 0

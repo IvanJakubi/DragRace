@@ -6,9 +6,9 @@ using UnityEngine;
 public class CarController : MonoBehaviour
 {
     #region Private Variables
-    private bool _gearRaised = false;
     private bool _usingNitro = false;
     private float _currentNitroAcceleration;
+    private const float minSpeedToGear = 0.8f;
 
     [SerializeField] Speedometer speedometer;
     #endregion
@@ -18,8 +18,6 @@ public class CarController : MonoBehaviour
     [Range(0f,1f)]
     public float[] acceleration;
     public float[] maxSpeed;
-    [Range(0.5f, 0.9f)]
-    public float[] minSpeedToGear;
     [Range(0.1f, 0.9f)]
     public float[] loseSpeedOnGear;
     [Header("Nitro Array")]
@@ -38,6 +36,7 @@ public class CarController : MonoBehaviour
     public float currentSpeed;
     public float currentNitroMeter;
     public bool isDodging = false;
+    public bool gearRaised = false;
     public GearChangeSuccess gearChangeSuccess;
 
     [Header("Components")]
@@ -120,7 +119,7 @@ public class CarController : MonoBehaviour
     //On LeanFingerOld, activate this function
     public void ActivateNitro()
     {
-        if (_gearRaised == false && isDodging == false && currentNitroMeter > 0f)
+        if (gearRaised == false && isDodging == false && currentNitroMeter > 0f)
         {
             _currentNitroAcceleration = nitroAcceleration;
             _usingNitro = true;
@@ -143,10 +142,14 @@ public class CarController : MonoBehaviour
     //On LeanFingerUp, activate this function
     public void ResetGearRaise()
     {
-        _gearRaised = false;
+        gearRaised = false;
         SetGearChangeSuccess(GearChangeSuccess.Waiting);
         StartCoroutine(speedometer.GearStatus());
+    }
 
+    public void StartResetDodge()
+    {
+        StartCoroutine(ResetDodge());
     }
 
     //On LeanSwipeGearUp, activate this function
@@ -157,26 +160,26 @@ public class CarController : MonoBehaviour
     {
         string currentGear = (gear+1).ToString();
 
-        if (gear < 5 && _gearRaised == false)
+        if (gear < 5 && gearRaised == false)
         {
-            if (currentSpeed > maxSpeed[gear] * minSpeedToGear[gear])
+            if (currentSpeed > maxSpeed[gear] * minSpeedToGear)
             {
                 gear++;
-                _gearRaised = true;
+                gearRaised = true;
                 SetGearChangeSuccess(GearChangeSuccess.Perfect);
             }
             else
             {
                 gear++;
                 currentSpeed = currentSpeed - (currentSpeed * loseSpeedOnGear[gear]);
-                _gearRaised = true;
+                gearRaised = true;
                 SetGearChangeSuccess(GearChangeSuccess.Fail);
             }
         }
         
-        if (gear >= 5 && _gearRaised == false)
+        if (gear >= 5 && gearRaised == false)
         {
-            _gearRaised = true;
+            gearRaised = true;
             SetGearChangeSuccess(GearChangeSuccess.Max);
         }
 
@@ -224,6 +227,16 @@ public class CarController : MonoBehaviour
         skidMarkLeft.emitting = true;
         smokeLeft.Play();
         smokeRight.Play();
+    }
+
+    private IEnumerator ResetDodge()
+    {
+        while (carAnimator.GetCurrentAnimatorStateInfo(0).IsName("DodgeLeft") || carAnimator.GetCurrentAnimatorStateInfo(0).IsName("DodgeRight"))
+        {
+            yield return null;
+        }
+
+        isDodging = false;
     }
 
     private void SetGearChangeSuccess (GearChangeSuccess _gearChangeSuccess)

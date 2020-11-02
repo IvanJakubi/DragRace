@@ -62,6 +62,7 @@ public class Speedometer : MonoBehaviour
                 gearIcon.GetComponent<Image>().color = Color.red;
                 break;
             case CarController.GearChangeSuccess.Waiting:
+                yield return new WaitForSeconds(0.3f);
                 gearIcon.GetComponent<Image>().color = new Color(0, 206, 211);
                 break;
         }

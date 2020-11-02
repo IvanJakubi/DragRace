@@ -12,6 +12,5 @@ public class CarAnimatorController : MonoBehaviour
         CarController.skidMarkLeft.emitting = false;
         CarController.smokeLeft.Stop();
         CarController.smokeRight.Stop();
-        CarController.isDodging = false;
     }
 }
