@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c1ba4d6a8c1a7546860577ef8790086, type: 3}
-  m_Name: CommonList
+  m_Name: Rare
   m_EditorClassIdentifier: 
   carList:
   - {fileID: 11400000, guid: 17292d698e0bbe849afa287aba273e3c, type: 2}

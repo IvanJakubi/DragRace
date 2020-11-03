@@ -6,4 +6,6 @@ using UnityEngine;
 public class CarsData : ScriptableObject
 {
     public GameObject carPrefab;
+    public CarRarity carRarity;
+    public CarType carType;
 }

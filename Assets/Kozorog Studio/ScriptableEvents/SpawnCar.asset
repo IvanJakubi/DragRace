@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8224e212dba21740926842558b27a80, type: 3}
-  m_Name: Car4Data
+  m_Script: {fileID: 11500000, guid: dddc592dadb5608488e12e712b171181, type: 3}
+  m_Name: SpawnCar
   m_EditorClassIdentifier: 
-  carPrefab: {fileID: 8732060142304094916, guid: ffa450d88f946d849be127814dc56006, type: 3}
+  _eventListeners: []

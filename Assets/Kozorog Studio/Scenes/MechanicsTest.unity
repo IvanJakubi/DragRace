@@ -1451,6 +1451,61 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 343909526}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &350503313 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7698633545945060064, guid: 5b2ec36216a848049956a3a20825e3fa, type: 3}
+  m_PrefabInstance: {fileID: 3359900708065930784}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &350503315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350503313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e960245c95e35a49878771132a8759f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _eventListenerStructs:
+  - _scriptableEvent: {fileID: 11400000, guid: 5fae5b30c9dbf2240aa8e13590b0fa42, type: 2}
+    _messageUnityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 350503316}
+          m_TargetAssemblyTypeName: CarSpawnController, Assembly-CSharp
+          m_MethodName: SpawnCar
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &350503316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350503313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b3de7e9e7c98134783911f22919bc47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carType: 0
+  carRarity: 2
+  carRarityList:
+  - {fileID: 11400000, guid: 59a204628c01482489f4a98be2aa95a5, type: 2}
+  - {fileID: 11400000, guid: b641183b046c1c2459523eb54c3e2145, type: 2}
+  - {fileID: 11400000, guid: fe366c93b549656448f94d233595a32b, type: 2}
+  - {fileID: 11400000, guid: 596ec31de4bbecd4f98c5b4a8b7c183a, type: 2}
+  currentCarRarity: {fileID: 0}
+  currentCarList: []
 --- !u!1 &362520955
 GameObject:
   m_ObjectHideFlags: 0
