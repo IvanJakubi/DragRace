@@ -17,12 +17,7 @@ public class PathFollower : MonoBehaviour
     private CarController _carController;
     private PlayerMovementState _playerMovementState;
 
-    private enum PlayerMovementState
-    {
-        NotRacing,
-        Racing
-    }
-
+    [SerializeField] private ScriptableEvent endReached;
     #endregion
 
     #region Unity event functions
@@ -59,6 +54,12 @@ public class PathFollower : MonoBehaviour
         _dstTravelled += _carController.currentSpeed * Time.deltaTime;
         transform.position = pathCreator.path.GetPointAtDistance(_dstTravelled, end);
         transform.rotation = pathCreator.path.GetRotationAtDistance(_dstTravelled, end);
+
+        if (transform.position == pathCreator.path.GetPoint(pathCreator.path.NumPoints -1))
+        {
+            endReached.RaiseEvent(new EventMessage());
+            SetPlayerMovementState(PlayerMovementState.NotRacing);
+        }
     }
     #endregion
 
@@ -68,6 +69,5 @@ public class PathFollower : MonoBehaviour
     {
         _playerMovementState = playerMovementState;
     }
-
     #endregion
 }

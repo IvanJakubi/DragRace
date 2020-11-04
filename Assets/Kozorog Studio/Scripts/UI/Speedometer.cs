@@ -53,7 +53,7 @@ public class Speedometer : MonoBehaviour
         switch (carController.gearChangeSuccess)
         {
             case CarController.GearChangeSuccess.Max:
-                iTween.ShakePosition(gearIcon, iTween.Hash("x", 3f, "y", 3f, "time", 0.5f, "delay", 0f));
+                //iTween.ShakePosition(gearIcon, iTween.Hash("x", 3f, "y", 3f, "time", 0.5f, "delay", 0f));
                 break;
             case CarController.GearChangeSuccess.Perfect:
                 gearIcon.GetComponent<Image>().color = Color.green;

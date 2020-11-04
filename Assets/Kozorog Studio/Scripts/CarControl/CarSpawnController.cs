@@ -6,25 +6,32 @@ using UnityEngine;
 
 public class CarSpawnController : MonoBehaviour
 {
+    #region Public Variables
     public CarType carType;
     public CarRarity carRarity;
 
     [Header("")]
     public List<CarList> carRarityList;
+    #endregion
 
-    [Header("")]
-    [SerializeField] private CarList currentCarRarity;
-    [SerializeField] private List<CarsData> currentCarList;
-
+    #region Private Variables
+    private CarList currentCarRarity;
+    private List<CarsData> currentCarList;
     private CarsData carToSpawn;
+    #endregion
 
     // Start is called before the first frame update
     void Start()
     {
-                
+        SpawnCar();
     }
 
-    public void SpawnCar(EventMessage eventMessage)
+    public void CallSpawnCar (EventMessage eventMessage)
+    {
+        SpawnCar();
+    }
+
+    private void SpawnCar()
     {
         for (int i = 0; i < carRarityList.Count; i++)
         {

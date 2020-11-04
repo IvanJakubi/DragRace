@@ -6,6 +6,13 @@ public class CarAnimatorController : MonoBehaviour
 {
     public CarController CarController;
 
+    [SerializeField] ScriptableEvent rewardEnd;
+
+    public void OnRewardEnd()
+    {
+        rewardEnd.RaiseEvent(new EventMessage());
+    }
+
     public void StopSkidMarks()
     {
         CarController.skidMarkRight.emitting = false;

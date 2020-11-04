@@ -72,7 +72,23 @@ public class CarController : MonoBehaviour
         if (isDodging == false)
             DodgeRight();
     }
- 
+
+    public void OnCollisionCalled (EventMessage eventMessage)
+    {
+        CollisionSlowCar();
+    }
+
+    public void OnNitroFillCalled (EventMessage eventMessage)
+    {
+        CollisionNitroFill();
+    }
+
+    public void OnEndReached(EventMessage eventMessage)
+    {
+        carAnimator.Play("EndDrift");
+        DodgeActivate();
+    }
+
     #endregion
 
     #region Public functions
@@ -242,6 +258,16 @@ public class CarController : MonoBehaviour
     private void SetGearChangeSuccess (GearChangeSuccess _gearChangeSuccess)
     {
         gearChangeSuccess = _gearChangeSuccess;
+    }
+
+    private void CollisionSlowCar()
+    {
+        currentSpeed = currentSpeed / 2f;
+    }
+
+    private void CollisionNitroFill()
+    {
+        currentNitroMeter += maxNitroMeter * 0.2f;
     }
     #endregion
 }

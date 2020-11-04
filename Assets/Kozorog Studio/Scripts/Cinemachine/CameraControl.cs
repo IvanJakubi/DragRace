@@ -9,6 +9,7 @@ public class CameraControl : MonoBehaviour
     [Header("Game Cameras")]
     [SerializeField] private GameObject regularSpeedCamera;
     [SerializeField] private GameObject nitroSpeedCamera;
+    [SerializeField] private GameObject endRewardCamera;
 
     [Header("Menu Cameras")]
     [SerializeField] private GameObject mainMenuCamera;
@@ -19,11 +20,21 @@ public class CameraControl : MonoBehaviour
         mainMenuCamera.SetActive(false);
         regularSpeedCamera.SetActive(true);
     }
+
+    public void OnRewardEnd(EventMessage eventMessage)
+    {
+        endRewardCamera.SetActive(true);
+        regularSpeedCamera.SetActive(false);
+        nitroSpeedCamera.SetActive(false);
+    }
     
     public void ActivateGameCamera()
     {
-        regularSpeedCamera.SetActive(true);
-        nitroSpeedCamera.SetActive(false);
+        if (!endRewardCamera.activeInHierarchy)
+        {
+            regularSpeedCamera.SetActive(true);
+            nitroSpeedCamera.SetActive(false);
+        }
     }
 
     public void ActivateNitroCamera()

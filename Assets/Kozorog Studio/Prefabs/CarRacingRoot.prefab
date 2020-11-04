@@ -14515,7 +14515,7 @@ MonoBehaviour:
   - 250
   nitroAcceleration: 0.5
   maxNitroMeter: 10
-  nitroMeterConsumption: 0.1
+  nitroMeterConsumption: 0.15
   nitroMeterFill: 0.08
   gear: 0
   currentSpeed: 0
@@ -14565,6 +14565,38 @@ MonoBehaviour:
         - m_Target: {fileID: 2172237797671215546}
           m_TargetAssemblyTypeName: PathFollower, Assembly-CSharp
           m_MethodName: OnGameStart
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - _scriptableEvent: {fileID: 11400000, guid: 1547b2c5665b4ee4887223e25bc13dca, type: 2}
+    _messageUnityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2172237797671215549}
+          m_TargetAssemblyTypeName: CarController, Assembly-CSharp
+          m_MethodName: OnCollisionCalled
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - _scriptableEvent: {fileID: 11400000, guid: f5a1ef2d33a709e409f96b9647284749, type: 2}
+    _messageUnityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2172237797671215549}
+          m_TargetAssemblyTypeName: CarController, Assembly-CSharp
+          m_MethodName: OnNitroFillCalled
           m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -19752,9 +19784,12 @@ GameObject:
   - component: {fileID: 149331882101188559}
   - component: {fileID: 8799812618217454630}
   - component: {fileID: 2043082006}
+  - component: {fileID: 2209950267306389867}
+  - component: {fileID: 255638112573338441}
+  - component: {fileID: 1198350047572355172}
   m_Layer: 0
-  m_Name: Car
-  m_TagString: Untagged
+  m_Name: CarHolder
+  m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19767,7 +19802,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7597708780066285577}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6241542709594852161}
@@ -19810,6 +19845,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CarController: {fileID: 2172237797671215549}
+--- !u!114 &2209950267306389867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7597708780066285577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe40c626201aabd4dab0a81880b4a16c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionSlowDownEvent: {fileID: 11400000, guid: 1547b2c5665b4ee4887223e25bc13dca, type: 2}
+  collisionNitroFill: {fileID: 11400000, guid: f5a1ef2d33a709e409f96b9647284749, type: 2}
+--- !u!54 &255638112573338441
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7597708780066285577}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &1198350047572355172
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7597708780066285577}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.65, y: 1.7, z: 3.8}
+  m_Center: {x: 0, y: 0.8, z: 0}
 --- !u!1 &7698633545945060064
 GameObject:
   m_ObjectHideFlags: 0
@@ -19819,6 +19897,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6241542709594852161}
+  - component: {fileID: 350503315}
+  - component: {fileID: 350503316}
   m_Layer: 0
   m_Name: Cars
   m_TagString: Untagged
@@ -19840,6 +19920,54 @@ Transform:
   m_Father: {fileID: 149331882101188559}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &350503315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7698633545945060064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e960245c95e35a49878771132a8759f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _eventListenerStructs:
+  - _scriptableEvent: {fileID: 11400000, guid: 5fae5b30c9dbf2240aa8e13590b0fa42, type: 2}
+    _messageUnityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 350503316}
+          m_TargetAssemblyTypeName: CarSpawnController, Assembly-CSharp
+          m_MethodName: CallSpawnCar
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &350503316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7698633545945060064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b3de7e9e7c98134783911f22919bc47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carType: 0
+  carRarity: 0
+  carRarityList:
+  - {fileID: 11400000, guid: 59a204628c01482489f4a98be2aa95a5, type: 2}
+  - {fileID: 11400000, guid: b641183b046c1c2459523eb54c3e2145, type: 2}
+  - {fileID: 11400000, guid: fe366c93b549656448f94d233595a32b, type: 2}
+  - {fileID: 11400000, guid: 596ec31de4bbecd4f98c5b4a8b7c183a, type: 2}
 --- !u!1 &8638805689429052934
 GameObject:
   m_ObjectHideFlags: 0
