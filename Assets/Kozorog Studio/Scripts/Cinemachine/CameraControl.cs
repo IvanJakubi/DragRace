@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class CameraControl : MonoBehaviour
 {
@@ -14,6 +15,11 @@ public class CameraControl : MonoBehaviour
     [Header("Menu Cameras")]
     [SerializeField] private GameObject mainMenuCamera;
     [SerializeField] private GameObject shopMenuCamera;
+
+    public void Start()
+    {
+        
+    }
 
     public void OnGameStart(EventMessage eventMessage)
     {
@@ -44,20 +50,5 @@ public class CameraControl : MonoBehaviour
             regularSpeedCamera.SetActive(false);
             nitroSpeedCamera.SetActive(true);
         }
-    }
-
-    public void EndReachedCamera()
-    {
-
-    }
-
-    public void ActivateMenuCamera()
-    {
-
-    }
-
-    public void ActivateShopCamera()
-    {
-
     }
 }

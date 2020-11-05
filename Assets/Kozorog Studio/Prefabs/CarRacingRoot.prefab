@@ -14545,6 +14545,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 0}
   end: 2
+  endReached: {fileID: 11400000, guid: ebdfe4d966492324389e5f1eed3236e7, type: 2}
 --- !u!114 &2172237797671215547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14598,6 +14599,34 @@ MonoBehaviour:
           m_TargetAssemblyTypeName: CarController, Assembly-CSharp
           m_MethodName: OnNitroFillCalled
           m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - _scriptableEvent: {fileID: 11400000, guid: ebdfe4d966492324389e5f1eed3236e7, type: 2}
+    _messageUnityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2172237797671215549}
+          m_TargetAssemblyTypeName: CarController, Assembly-CSharp
+          m_MethodName: OnEndReached
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 2172237797671215549}
+          m_TargetAssemblyTypeName: CarController, Assembly-CSharp
+          m_MethodName: DeactivateNitro
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -19845,6 +19874,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CarController: {fileID: 2172237797671215549}
+  rewardEnd: {fileID: 11400000, guid: 6043cf37f380c0547825e73c4afd9f83, type: 2}
 --- !u!114 &2209950267306389867
 MonoBehaviour:
   m_ObjectHideFlags: 0
