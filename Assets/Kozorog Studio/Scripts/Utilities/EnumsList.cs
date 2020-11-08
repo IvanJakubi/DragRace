@@ -52,3 +52,19 @@ public enum PlayerMovementState
     Racing
 }
 
+public enum RewardVideoType
+{
+    GoldMultiplier,
+    SpecialSkinPoint
+}
+
+public enum PlayerNames
+{
+
+}
+
+public enum PlayerCountry
+{
+
+}
+

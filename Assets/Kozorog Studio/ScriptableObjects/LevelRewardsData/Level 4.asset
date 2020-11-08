@@ -9,7 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dddc592dadb5608488e12e712b171181, type: 3}
-  m_Name: RewardEnd
+  m_Script: {fileID: 11500000, guid: 1305af33a0b83b1468cc85f8d407454c, type: 3}
+  m_Name: Level 4
   m_EditorClassIdentifier: 
-  _eventListeners: []
+  goldCoinRewardWin: 400
+  goldCoinRewardLose: 65
+  skinPointsReward: 5
