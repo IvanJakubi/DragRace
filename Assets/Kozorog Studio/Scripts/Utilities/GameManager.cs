@@ -15,11 +15,15 @@ public class GameManager : MonoBehaviour
     public bool hasVIP;
 
     [Header("")]
-    [SerializeField] private RewardData[] levelList;
+    public RewardData[] levelList;
+
+    [Header("")]
+    [SerializeField] private ScriptableEvent onUpdateGold;
 
     // Start is called before the first frame update
     public void GiveRewardMultiplier(EventMessage eventMessage)
     {
         goldCoins += levelList[currentLevel].goldCoinRewardWin * 5;
+        onUpdateGold.RaiseEvent(new EventMessage());
     }
 }

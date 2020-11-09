@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.Advertisements;
 
 public class AdManager : MonoBehaviour, IUnityAdsListener
@@ -8,6 +9,7 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
 
     private string interstetialAd = "video";
     private string rewardedVideoAd = "rewardedVideo";
+    private string bannerAd = "banner";
 
     public bool isTargetPlaystore;
     public bool isTestAd;
@@ -22,16 +24,18 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
     {
         Advertisement.AddListener(this);
         InitializeAdvertisement();
+        StartCoroutine(ShowBannerAd());
     }
 
     private void InitializeAdvertisement()
     {
-        if (isTargetPlaystore)
+        if (!isTargetPlaystore)
         {
-            Advertisement.Initialize(playstoreID, isTestAd);
+            Advertisement.Initialize(appstoreID, isTestAd);
             return;
         }
-        Advertisement.Initialize(appstoreID, isTestAd);
+
+        Advertisement.Initialize(playstoreID, isTestAd);
     }
 
     public void PlayInterstetialAd()
@@ -50,6 +54,15 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
             return;
         }
         Advertisement.Show(rewardedVideoAd);
+    }
+
+    public IEnumerator ShowBannerAd()
+    {
+        while (!Advertisement.IsReady(bannerAd))
+            yield return null;
+
+        Advertisement.Banner.SetPosition(BannerPosition.BOTTOM_CENTER);
+        Advertisement.Banner.Show(bannerAd);
     }
 
     public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)

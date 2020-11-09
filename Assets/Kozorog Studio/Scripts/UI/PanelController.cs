@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class PanelController : MonoBehaviour
 {
-    [SerializeField] private GameObject _gamePanel, _menuPanel, _rewardPanel; 
+    [SerializeField] private GameObject _gamePanel, _menuPanel, _rewardPanel, _settingsMenu;
+    [SerializeField] private ScriptableEvent onRewardUpdateAmount;
 
     public void OnGameStart (EventMessage eventMessage)
     {
@@ -15,6 +16,7 @@ public class PanelController : MonoBehaviour
     public void OnReward(EventMessage eventMessage)
     {
         ActivateRewardMenu();
+        onRewardUpdateAmount.RaiseEvent(new EventMessage());
     }
 
     public void ActivateGameMenu()
@@ -27,6 +29,18 @@ public class PanelController : MonoBehaviour
     {
         _rewardPanel.SetActive(true);
         _gamePanel.SetActive(false);
+    }
+
+    public void ActivateSettings()
+    {
+        _menuPanel.SetActive(false);
+        _settingsMenu.SetActive(true);
+    }
+
+    public void CloseSettings()
+    {
+        _menuPanel.SetActive(true);
+        _settingsMenu.SetActive(false);
     }
 }
 
