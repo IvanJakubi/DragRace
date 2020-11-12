@@ -8,10 +8,10 @@ public class EnemyPathFollower : MonoBehaviour
     #region Public variables
     public PathCreator pathCreator;
     public EndOfPathInstruction end;
+    public float _dstTravelled;
     #endregion
 
     #region Private variables
-    private float _dstTravelled;
     private bool _isDriving;
     private IEnumerator _followPath;
     EnemyCarController _carController;

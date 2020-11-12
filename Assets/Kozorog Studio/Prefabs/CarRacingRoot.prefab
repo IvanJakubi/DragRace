@@ -14450,6 +14450,7 @@ GameObject:
   - component: {fileID: 2172237797671215549}
   - component: {fileID: 2172237797671215546}
   - component: {fileID: 2172237797671215547}
+  - component: {fileID: 1069462577}
   m_Layer: 0
   m_Name: CarRacingRoot
   m_TagString: Untagged
@@ -14486,12 +14487,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedometer: {fileID: 0}
   acceleration:
-  - 0.6
-  - 0.5
-  - 0.3
   - 0.2
   - 0.2
-  - 0.1
+  - 0.2
+  - 0.2
+  - 0.2
+  - 0.2
   maxSpeed:
   - 30
   - 50
@@ -14545,6 +14546,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 0}
   end: 2
+  _dstTravelled: 0
   endReached: {fileID: 11400000, guid: ebdfe4d966492324389e5f1eed3236e7, type: 2}
 --- !u!114 &2172237797671215547
 MonoBehaviour:
@@ -14635,6 +14637,20 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &1069462577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2477448418086168217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe40c626201aabd4dab0a81880b4a16c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionSlowDownEvent: {fileID: 11400000, guid: 1547b2c5665b4ee4887223e25bc13dca, type: 2}
+  collisionNitroFill: {fileID: 11400000, guid: f5a1ef2d33a709e409f96b9647284749, type: 2}
 --- !u!1 &2971397740241527053
 GameObject:
   m_ObjectHideFlags: 0
@@ -14796,6 +14812,36 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 0
+--- !u!1 &4619881404887232483
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7092783942967205757}
+  m_Layer: 0
+  m_Name: CrownHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7092783942967205757
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4619881404887232483}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 149331882101188559}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4790953154283476296
 GameObject:
   m_ObjectHideFlags: 0
@@ -19839,6 +19885,7 @@ Transform:
   - {fileID: 1004184405832858348}
   - {fileID: 2810617448677586980}
   - {fileID: 4609442125986114381}
+  - {fileID: 7092783942967205757}
   m_Father: {fileID: 2966318103598824483}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -19873,8 +19920,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53a4e260f77cc0242a0aeee05c61c89f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CarController: {fileID: 2172237797671215549}
-  rewardEnd: {fileID: 11400000, guid: 6043cf37f380c0547825e73c4afd9f83, type: 2}
+  carController: {fileID: 2172237797671215549}
+  rewardEndReached: {fileID: 11400000, guid: 6043cf37f380c0547825e73c4afd9f83, type: 2}
 --- !u!114 &2209950267306389867
 MonoBehaviour:
   m_ObjectHideFlags: 0
