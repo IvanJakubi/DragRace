@@ -9,6 +9,8 @@ public class PathFollower : MonoBehaviour
     public PathCreator pathCreator;
     public EndOfPathInstruction end;
     public float _dstTravelled;
+
+    public float pathLength;
     #endregion
 
     #region Private variables
@@ -24,6 +26,7 @@ public class PathFollower : MonoBehaviour
     private void Awake()
     {
         Initialization();
+        pathLength = pathCreator.path.length;
     }
 
     private void Update()
