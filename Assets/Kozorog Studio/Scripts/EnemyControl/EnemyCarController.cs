@@ -3,41 +3,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarController : MonoBehaviour
+public class EnemyCarController : MonoBehaviour
 {
     #region Private Variables
     private bool _usingNitro = false;
     private float _currentNitroAcceleration;
-    private const float minSpeedToGear = 0.8f;
 
-    [SerializeField] Speedometer speedometer;
     #endregion
 
     #region Public Variables
     [Header("Speed Array")]
-    [Range(0f,1f)]
+    [Range(0f, 1f)]
     public float[] acceleration;
     public float[] maxSpeed;
-    [Range(0.1f, 0.9f)]
-    public float[] loseSpeedOnGear;
+
     [Header("Nitro Array")]
     public float[] maxSpeedNitro;
     [Range(0.5f, 2f)]
     public float nitroAcceleration;
-    public float maxNitroMeter;
     [Range(0f, 1f)]
     public float nitroMeterConsumption;
-    [Range(0f, 1f)]
-    public float nitroMeterFill;
 
     [Header("Car Status")]
     [Range(0, 5)]
     public int gear;
     public float currentSpeed;
     public float currentNitroMeter;
-    public bool isDodging = false;
-    public bool gearRaised = false;
-    public GearChangeSuccess gearChangeSuccess;
 
     [Header("Components")]
     public TrailRenderer skidMarkRight;
@@ -55,24 +46,27 @@ public class CarController : MonoBehaviour
     #region Event Messages
     public void OnDodgeLeft(EventMessage eventMessage)
     {
-        if (isDodging == false)
             DodgeLeft();
     }
 
     public void OnDodgeRight(EventMessage eventMessage)
     {
-        if (isDodging == false)
             DodgeRight();
     }
 
-    public void OnCollisionCalled (EventMessage eventMessage)
+    public void OnGearUp(EventMessage eventMessage)
     {
-        CollisionSlowCar();
+        RaiseGear();
     }
 
-    public void OnNitroFillCalled (EventMessage eventMessage)
+    public void OnNitroActivated(EventMessage eventMessage)
     {
-        CollisionNitroFill();
+        StartCoroutine(ActivateNitro());
+    }
+
+    public void OnCollisionCalled(EventMessage eventMessage)
+    {
+        CollisionSlowCar();
     }
 
     public void OnEndReached(EventMessage eventMessage)
@@ -80,7 +74,6 @@ public class CarController : MonoBehaviour
         carAnimator.Play("EndDrift");
         DodgeActivate();
     }
-
     #endregion
 
     #region Public functions
@@ -96,7 +89,7 @@ public class CarController : MonoBehaviour
 
             if (currentSpeed > maxSpeed[gear])
             {
-                currentSpeed -= acceleration[gear]*2;
+                currentSpeed -= acceleration[gear] * 2;
             }
         }
         else
@@ -115,26 +108,22 @@ public class CarController : MonoBehaviour
     /// <summary>
     /// If the nitro isn't being used, the currentNitroMeter will increase and stay at maxNitroMeter
     /// </summary>
-    public void FillNitroMeter()
-    {
-        if (_usingNitro == false)
-            currentNitroMeter += nitroMeterFill;
-
-        if (currentNitroMeter > maxNitroMeter)
-            currentNitroMeter = maxNitroMeter;
-    }
 
     //On LeanFingerOld, activate this function
-    public void ActivateNitro()
+    public IEnumerator ActivateNitro()
     {
-        if (gearRaised == false && isDodging == false && currentNitroMeter > 0f)
+        while (currentNitroMeter > 0f)
         {
             _currentNitroAcceleration = nitroAcceleration;
             _usingNitro = true;
             speedParticle.Play();
             nitroFlameLeft.Play();
             nitroFlameRight.Play();
+
+            yield return null;
         }
+
+        yield return null;
     }
 
     //On LeanFingerUp, activate this function
@@ -147,52 +136,20 @@ public class CarController : MonoBehaviour
         nitroFlameRight.Stop();
     }
 
-    //On LeanFingerUp, activate this function
-    public void ResetGearRaise()
-    {
-        gearRaised = false;
-        SetGearChangeSuccess(GearChangeSuccess.Waiting);
-        StartCoroutine(speedometer.GearStatus());
-    }
-
-    public void StartResetDodge()
-    {
-        StartCoroutine(ResetDodge());
-    }
-
     //On LeanSwipeGearUp, activate this function
     /// <summary>
     /// Checks if current speed has reached a minimum requiered to increase gear level. If not, the current speed will be lowered but gear will increase.
     /// </summary>
     public void RaiseGear()
     {
-        string currentGear = (gear+1).ToString();
 
-        if (gear < 5 && gearRaised == false)
+        if (gear < 5)
         {
-            if (currentSpeed > maxSpeed[gear] * minSpeedToGear)
-            {
-                gear++;
-                gearRaised = true;
-                SetGearChangeSuccess(GearChangeSuccess.Perfect);
-            }
-            else
-            {
-                gear++;
-                currentSpeed = currentSpeed - (currentSpeed * loseSpeedOnGear[gear]);
-                gearRaised = true;
-                SetGearChangeSuccess(GearChangeSuccess.Fail);
-            }
+            gear++;
         }
-        
-        if (gear >= 5 && gearRaised == false)
-        {
-            gearRaised = true;
-            SetGearChangeSuccess(GearChangeSuccess.Max);
-        }
+        else
+            return;
 
-        StartCoroutine(speedometer.GearStatus());
-        speedometer.gearText.text = currentGear;
     }
     #endregion
 
@@ -211,55 +168,28 @@ public class CarController : MonoBehaviour
 
     private void DodgeLeft()
     {
-        if(_usingNitro == false)
-        {
-            carAnimator.Play("DodgeLeft");
-            DodgeActivate();
-        }
+        carAnimator.Play("DodgeLeft");
+        DodgeActivate();
 
     }
 
     private void DodgeRight()
     {
-        if (_usingNitro == false)
-        {
-            carAnimator.Play("DodgeRight");
-            DodgeActivate();
-        }
+        carAnimator.Play("DodgeRight");
+        DodgeActivate();
     }
 
-    private void DodgeActivate ()
+    private void DodgeActivate()
     {
-        isDodging = true;
         skidMarkRight.emitting = true;
         skidMarkLeft.emitting = true;
         smokeLeft.Play();
         smokeRight.Play();
     }
 
-    private IEnumerator ResetDodge()
-    {
-        while (carAnimator.GetCurrentAnimatorStateInfo(0).IsName("DodgeLeft") || carAnimator.GetCurrentAnimatorStateInfo(0).IsName("DodgeRight"))
-        {
-            yield return null;
-        }
-
-        isDodging = false;
-    }
-
-    private void SetGearChangeSuccess (GearChangeSuccess _gearChangeSuccess)
-    {
-        gearChangeSuccess = _gearChangeSuccess;
-    }
-
     private void CollisionSlowCar()
     {
         currentSpeed = currentSpeed / 2f;
-    }
-
-    private void CollisionNitroFill()
-    {
-        currentNitroMeter += maxNitroMeter * 0.2f;
     }
     #endregion
 }

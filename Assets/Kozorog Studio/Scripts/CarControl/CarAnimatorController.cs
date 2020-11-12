@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class CarAnimatorController : MonoBehaviour
 {
-    public CarController CarController;
+    public CarController carController;
 
-    [SerializeField] ScriptableEvent rewardEnd;
+    [SerializeField] ScriptableEvent rewardEndReached;
 
     public void OnRewardEnd()
     {
-        rewardEnd.RaiseEvent(new EventMessage());
+        rewardEndReached.RaiseEvent(new EventMessage());
     }
 
     public void StopSkidMarks()
     {
-        CarController.skidMarkRight.emitting = false;
-        CarController.skidMarkLeft.emitting = false;
-        CarController.smokeLeft.Stop();
-        CarController.smokeRight.Stop();
+        carController.skidMarkRight.emitting = false;
+        carController.skidMarkLeft.emitting = false;
+        carController.smokeLeft.Stop();
+        carController.smokeRight.Stop();
     }
 }

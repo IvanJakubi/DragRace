@@ -26,4 +26,10 @@ public class GameManager : MonoBehaviour
         goldCoins += levelList[currentLevel].goldCoinRewardWin * 5;
         onUpdateGold.RaiseEvent(new EventMessage());
     }
+
+    public void GiveRewardRegular (EventMessage eventMessage)
+    {
+        goldCoins += levelList[currentLevel].goldCoinRewardWin;
+        onUpdateGold.RaiseEvent(new EventMessage());
+    }
 }

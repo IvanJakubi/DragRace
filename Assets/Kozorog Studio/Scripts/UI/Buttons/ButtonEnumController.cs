@@ -11,6 +11,17 @@ public class ButtonEnumController : MonoBehaviour
     {
         adManager.rewardVideoType = rewardVideoType;
 
-        adManager.PlayRewardedVideoAd();
+        switch (rewardVideoType)
+        {
+            case RewardVideoType.InterstetialAd:
+                adManager.PlayInterstetialAd();
+                break;
+            case RewardVideoType.GoldMultiplier:
+                adManager.PlayRewardedVideoAd();
+                break;
+            case RewardVideoType.SpecialSkinPoint:
+                adManager.PlayRewardedVideoAd();
+                break;
+        }
     }
 }

@@ -16,8 +16,8 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
     public RewardVideoType rewardVideoType;
 
     [Header("Scriptable Events")]
-    public ScriptableEvent multiplierRewardEvent;
     public ScriptableEvent skinPointsRewardEvent;
+    public ScriptableEvent onAnimatedCoins;
 
     // Start is called before the first frame update
     void Start()
@@ -70,8 +70,12 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
         switch(showResult)
         {
             case ShowResult.Failed:
+                if (placementId == interstetialAd)
+                    onAnimatedCoins.RaiseEvent(new EventMessage());
                 break;
             case ShowResult.Skipped:
+                if (placementId == interstetialAd)
+                    onAnimatedCoins.RaiseEvent(new EventMessage());
                 break;
             case ShowResult.Finished:
                 if(placementId == rewardedVideoAd)
@@ -79,7 +83,7 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
                     switch (rewardVideoType)
                     {
                         case RewardVideoType.GoldMultiplier:
-                            multiplierRewardEvent.RaiseEvent(new EventMessage());
+                            onAnimatedCoins.RaiseEvent(new EventMessage());
                             break;
                         case RewardVideoType.SpecialSkinPoint:
                             skinPointsRewardEvent.RaiseEvent(new EventMessage());
@@ -87,6 +91,8 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
                     }
 
                 }
+                if (placementId == interstetialAd)
+                    onAnimatedCoins.RaiseEvent(new EventMessage());
                 break;
         }
     }

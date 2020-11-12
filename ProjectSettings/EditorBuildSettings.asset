@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Kozorog Studio/Scenes/MechanicsTest.unity
     guid: 16d313d1423a9754b941337bdf3f06a3
+  - enabled: 0
+    path: Assets/Kozorog Studio/Scenes/Level01.unity
+    guid: f9f27c33b4dc20942837f04b692f1887
+  - enabled: 0
+    path: Assets/Kozorog Studio/Scenes/Level02.unity
+    guid: 64814e08e2557bf4a8f5c20707d6babb
   m_configObjects: {}

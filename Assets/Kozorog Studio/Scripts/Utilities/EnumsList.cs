@@ -52,10 +52,34 @@ public enum PlayerMovementState
     Racing
 }
 
+public enum EnemyMovementState
+{
+    NotRacing,
+    Racing
+}
+
+public enum GearChangeSuccess
+{
+    Waiting,
+    Perfect,
+    Fail,
+    Max
+}
+
 public enum RewardVideoType
 {
     GoldMultiplier,
-    SpecialSkinPoint
+    SpecialSkinPoint,
+    InterstetialAd
+}
+
+public enum EnemyTriggerType
+{
+    ActivateNitro,
+    RaiseGear,
+    ActivateDodgeLeft,
+    ActivateDodgeRight,
+    Blockade
 }
 
 public enum PlayerNames

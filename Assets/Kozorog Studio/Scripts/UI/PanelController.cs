@@ -13,7 +13,7 @@ public class PanelController : MonoBehaviour
         ActivateGameMenu();
     }
 
-    public void OnReward(EventMessage eventMessage)
+    public void OnRewardMenuOpened(EventMessage eventMessage)
     {
         ActivateRewardMenu();
         onRewardUpdateAmount.RaiseEvent(new EventMessage());
