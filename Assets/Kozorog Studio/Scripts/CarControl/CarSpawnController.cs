@@ -8,7 +8,7 @@ public class CarSpawnController : MonoBehaviour
 {
     #region Public Variables
     public CarType carType;
-    public CarRarity carRarity;
+    public SkinRarity carRarity;
 
     [Header("")]
     public List<CarList> carRarityList;
@@ -29,6 +29,11 @@ public class CarSpawnController : MonoBehaviour
     public void CallSpawnCar (EventMessage eventMessage)
     {
         SpawnCar();
+    }
+
+    public void CallDestroyCar (EventMessage eventMessage)
+    {
+        DestroyCar();
     }
 
     private void SpawnCar()
@@ -54,5 +59,13 @@ public class CarSpawnController : MonoBehaviour
         }
 
         var newCarSpawn = Instantiate(carToSpawn.carPrefab, transform);
+    }
+
+    private void DestroyCar()
+    {
+        foreach(Transform child in transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
     }
 }

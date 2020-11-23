@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
             menuGoldText.text = goldCoins.ToString();
             rewardGoldText.text = goldCoins.ToString();
             shopGoldText.text = goldCoins.ToString();
+            SaveData.current.currentGold = goldCoins;
+            SerializationManager.Save("playerData", SaveData.current);
         }
     }
     public int skinPoints;
@@ -27,6 +29,8 @@ public class GameManager : MonoBehaviour
 
     [Header("")]
     public RewardData[] levelList;
+    public List<CarType> unlockedCars;
+    //public List<DriverType> unlockedDrivers;
 
     [Header("")]
     [SerializeField] private ScriptableEvent onUpdateGold;
@@ -38,21 +42,33 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        menuGoldText.text = goldCoins.ToString();
-        rewardGoldText.text = goldCoins.ToString();
-        shopGoldText.text = goldCoins.ToString();
+        SaveData.current = (SaveData)SerializationManager.Load(Application.persistentDataPath + "/saves/playerData.save");
+        goldCoins = SaveData.current.currentGold;
+
+        if (SaveData.current.unlockedCars == null)
+            SaveData.current.unlockedCars = new List<CarType>();
+        else
+            unlockedCars = SaveData.current.unlockedCars;
+
+        if (SaveData.current.unlockedDrivers == null)
+            SaveData.current.unlockedDrivers = new List<DriverType>();
+        //else
+        //    unlockedDrivers = SaveData.current.unlockedSkins;
     }
 
     // Start is called before the first frame update
     public void GiveRewardMultiplier(EventMessage eventMessage)
     {
         goldCoins += levelList[currentLevel].goldCoinRewardWin * 5;
-        //onUpdateGold.RaiseEvent(new EventMessage());
     }
 
     public void GiveRewardRegular (EventMessage eventMessage)
     {
         goldCoins += levelList[currentLevel].goldCoinRewardWin;
-        //onUpdateGold.RaiseEvent(new EventMessage());
+    }
+
+    public void GiveShopGoldReward (EventMessage eventMessage)
+    {
+        goldCoins += 200;
     }
 }

@@ -88,6 +88,9 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
                         case RewardVideoType.SpecialSkinPoint:
                             skinPointsRewardEvent.RaiseEvent(new EventMessage());
                             break;
+                        case RewardVideoType.ShopGoldReward:
+                            onAnimatedCoins.RaiseEvent(new EventMessage());
+                            break;
                     }
 
                 }

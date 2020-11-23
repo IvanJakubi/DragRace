@@ -26,6 +26,7 @@ public class RewardedCoinsAnimation : MonoBehaviour
 
     [SerializeField] ScriptableEvent onRewardMultiplierGiven;
     [SerializeField] ScriptableEvent onRegularRewardGiven;
+    [SerializeField] ScriptableEvent onShopGoldReward;
 
     [SerializeField] AdManager adManager;
 
@@ -45,7 +46,7 @@ public class RewardedCoinsAnimation : MonoBehaviour
         for (int i = 0; i <maxCoins; i++)
         {
             coin = Instantiate(animatedCoinPrefab);
-            coin.transform.parent = transform;
+            coin.transform.SetParent(transform);
             coin.enabled = false;
             coinsQueue.Enqueue(coin);
         }
@@ -80,6 +81,10 @@ public class RewardedCoinsAnimation : MonoBehaviour
 
             case RewardVideoType.GoldMultiplier:
                 onRewardMultiplierGiven.RaiseEvent(new EventMessage());
+                break;
+
+            case RewardVideoType.ShopGoldReward:
+                onShopGoldReward.RaiseEvent(new EventMessage());
                 break;
         }
 

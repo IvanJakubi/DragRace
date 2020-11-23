@@ -22,6 +22,9 @@ public class ButtonEnumController : MonoBehaviour
             case RewardVideoType.SpecialSkinPoint:
                 adManager.PlayRewardedVideoAd();
                 break;
+            case RewardVideoType.ShopGoldReward:
+                adManager.PlayRewardedVideoAd();
+                break;
         }
     }
 }

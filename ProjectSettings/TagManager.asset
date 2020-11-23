@@ -7,6 +7,9 @@ TagManager:
   - Blockade
   - Nitro
   - Car
+  - Outline
+  - SkinImage
+  - CarChildren
   layers:
   - Default
   - TransparentFX

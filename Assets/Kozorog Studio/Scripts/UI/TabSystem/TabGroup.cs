@@ -8,17 +8,11 @@ public class TabGroup : MonoBehaviour
 
     public List<TabButton> tabButtons;
     public Color tabIdle;
-    public Color tabHover;
     public Color tabActive;
     public TabButton selectedTab;
-    public TabButton defaultTab;
+    public List<GameObject> objectsToSwap;
 
-
-    private void Start()
-    {
-        TabButton button = defaultTab;
-        OnTabSelected(button);
-    }
+    [SerializeField] private RaritySkinController rarityController;
 
     public void Subscribe(TabButton button)
     {
@@ -30,25 +24,22 @@ public class TabGroup : MonoBehaviour
         tabButtons.Add(button);
     }
 
-    public void OnTabEnter(TabButton button)
-    {
-        ResetTabs();
-        if (selectedTab == null || button != selectedTab)
-        {
-            button.background.color = tabHover;
-        }
-    }
-
-    public void OnTabExit(TabButton button)
-    {
-        ResetTabs();
-    }
-
     public void OnTabSelected(TabButton button)
     {
         selectedTab = button;
         ResetTabs();
         button.background.color = tabActive;
+        int index = button.transform.GetSiblingIndex();
+        for (int i =0; i < objectsToSwap.Count; i++)
+        {
+            if (i == index)
+                objectsToSwap[i].SetActive(true);
+            else
+                objectsToSwap[i].SetActive(false);
+        }
+
+        rarityController.skinRarityIndex = 0;
+        rarityController.UpdateUI();
     }
 
     public void ResetTabs()

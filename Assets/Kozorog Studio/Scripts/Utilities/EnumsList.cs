@@ -7,7 +7,7 @@ public class EnumsList : MonoBehaviour
 
 }
 
-public enum CarRarity
+public enum SkinRarity
 {
     Common,
     Rare,
@@ -15,6 +15,7 @@ public enum CarRarity
     VIP
 }
 
+[System.Serializable]
 public enum CarType
 {
     CCar1,
@@ -46,6 +47,38 @@ public enum CarType
     VCar3,
 }
 
+[System.Serializable]
+public enum DriverType
+{
+    CDriver1,
+    CDriver2,
+    CDriver3,
+    CDriver4,
+    CDriver5,
+    CDriver6,
+    CDriver7,
+    CDriver8,
+    CDriver9,
+    RDriver1,
+    RDriver2,
+    RDriver3,
+    RDriver4,
+    RDriver5,
+    RDriver6,
+    RDriver7,
+    RDriver8,
+    RDriver9,
+    SDriver1,
+    SDriver2,
+    SDriver3,
+    SDriver4,
+    SDriver5,
+    SDriver6,
+    VDriver1,
+    VDriver2,
+    VDriver3,
+}
+
 public enum PlayerMovementState
 {
     NotRacing,
@@ -70,7 +103,8 @@ public enum RewardVideoType
 {
     GoldMultiplier,
     SpecialSkinPoint,
-    InterstetialAd
+    InterstetialAd,
+    ShopGoldReward
 }
 
 public enum EnemyTriggerType

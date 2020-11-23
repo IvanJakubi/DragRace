@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e092369419743ba46bd4095c27b628ba, type: 3}
+  m_Name: Rare
+  m_EditorClassIdentifier: Assembly-CSharp::Driverist
+  driverList:
+  - {fileID: 11400000, guid: 53b687cbe8fe03a49a540b856a68165b, type: 2}
+  - {fileID: 11400000, guid: c7fed34618c4ef84eaf853376c59e5f0, type: 2}
+  - {fileID: 11400000, guid: 7a1b5972c1752fa49b486d542d7dca5d, type: 2}
+  - {fileID: 11400000, guid: 5a417872274cd574c92bbbd0dd8f2ee5, type: 2}
+  - {fileID: 11400000, guid: 9e5462f9dfd55094cbd6f978c6f18ccf, type: 2}
+  - {fileID: 11400000, guid: e269942591d528a47b7d80695479a11b, type: 2}
+  - {fileID: 11400000, guid: f6c52fb62f5266c459479381f93d48b8, type: 2}
+  - {fileID: 11400000, guid: 9b8b10ba934ae2646bd5ad53c220b021, type: 2}
+  - {fileID: 11400000, guid: 761da088b211f1745a5a785ce76f1109, type: 2}

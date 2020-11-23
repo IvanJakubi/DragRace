@@ -17,8 +17,8 @@ public class CrownController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerCrown.transform.DOLocalRotate(new Vector3(0f,360f,0f), 1f, RotateMode.FastBeyond360).SetEase(Ease.Linear).SetLoops(-1, LoopType.Incremental).SetRelative();
-        enemyCrown.transform.DOLocalRotate(new Vector3(0f, 360f, 0f), 1f, RotateMode.FastBeyond360).SetEase(Ease.Linear).SetLoops(-1, LoopType.Incremental).SetRelative();
+        playerCrown.transform.DOLocalRotate(new Vector3(0f,360f,0f), 0.5f, RotateMode.FastBeyond360).SetEase(Ease.Linear).SetLoops(-1, LoopType.Incremental).SetRelative();
+        enemyCrown.transform.DOLocalRotate(new Vector3(0f, 360f, 0f), 0.5f, RotateMode.FastBeyond360).SetEase(Ease.Linear).SetLoops(-1, LoopType.Incremental).SetRelative();
 
         if (carPathFollower._dstTravelled == enemyPathFollower._dstTravelled)
         {

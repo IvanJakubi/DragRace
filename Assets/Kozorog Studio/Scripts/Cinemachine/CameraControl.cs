@@ -51,4 +51,16 @@ public class CameraControl : MonoBehaviour
             nitroSpeedCamera.SetActive(true);
         }
     }
+
+    public void ActivateShopCamera()
+    {
+        shopMenuCamera.SetActive(true);
+        mainMenuCamera.SetActive(false);
+    }
+
+    public void ExitShopCamera()
+    {
+        shopMenuCamera.SetActive(false);
+        mainMenuCamera.SetActive(true);
+    }
 }

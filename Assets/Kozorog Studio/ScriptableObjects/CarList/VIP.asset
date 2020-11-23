@@ -13,10 +13,6 @@ MonoBehaviour:
   m_Name: VIP
   m_EditorClassIdentifier: 
   carList:
-  - {fileID: 11400000, guid: 17292d698e0bbe849afa287aba273e3c, type: 2}
-  - {fileID: 11400000, guid: 043c4202ca1588e408ee260211b6d80b, type: 2}
-  - {fileID: 11400000, guid: cd19b054348773b469627e95d1cfbc78, type: 2}
-  - {fileID: 11400000, guid: 2197bd2bccc6bf1438296197728d4d49, type: 2}
-  - {fileID: 11400000, guid: 6b9755daf29049342ac62f56d319b949, type: 2}
-  - {fileID: 11400000, guid: e83aca3fdaef4cc458240516548f1fa7, type: 2}
-  - {fileID: 11400000, guid: 9350c6c11274d02449202f3fde6bf4db, type: 2}
+  - {fileID: 11400000, guid: bf1a139784625eb4f9edbb350a542c62, type: 2}
+  - {fileID: 11400000, guid: c7014c07882cdfe448d31b615b0b1c35, type: 2}
+  - {fileID: 11400000, guid: 451ac481a59b6d941bd57c237850c984, type: 2}

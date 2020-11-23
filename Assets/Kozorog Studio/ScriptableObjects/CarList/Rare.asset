@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: Rare
   m_EditorClassIdentifier: 
   carList:
-  - {fileID: 11400000, guid: 17292d698e0bbe849afa287aba273e3c, type: 2}
-  - {fileID: 11400000, guid: 043c4202ca1588e408ee260211b6d80b, type: 2}
-  - {fileID: 11400000, guid: cd19b054348773b469627e95d1cfbc78, type: 2}
-  - {fileID: 11400000, guid: 2197bd2bccc6bf1438296197728d4d49, type: 2}
-  - {fileID: 11400000, guid: 6b9755daf29049342ac62f56d319b949, type: 2}
-  - {fileID: 11400000, guid: e83aca3fdaef4cc458240516548f1fa7, type: 2}
-  - {fileID: 11400000, guid: 9350c6c11274d02449202f3fde6bf4db, type: 2}
+  - {fileID: 11400000, guid: 38068455fb782c946b067c9431b91024, type: 2}
+  - {fileID: 11400000, guid: 4bbea77ba158add4f9d3eda50248d456, type: 2}
+  - {fileID: 11400000, guid: 5529db701096cae45aa735cc1d0bc722, type: 2}
+  - {fileID: 11400000, guid: 38dcc1a9c23cf1a44887d1d796694ef6, type: 2}
+  - {fileID: 11400000, guid: 7215f6be502c0f64abf25aaf1cec3976, type: 2}
+  - {fileID: 11400000, guid: dca31971f1b16ca41ad99bea74bd468c, type: 2}
+  - {fileID: 11400000, guid: c04757b30fc028440817d2be44b01d74, type: 2}
+  - {fileID: 11400000, guid: 1379b56386d914242822cf3033bfc6f6, type: 2}
+  - {fileID: 11400000, guid: 5cd73df90c1c2034daed0af9ff942879, type: 2}
