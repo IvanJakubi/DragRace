@@ -5,7 +5,17 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public int currentLevel;
+    public int currentLevel
+    {
+        get { return _cl; }
+        set
+        {
+            _cl = value;
+
+            SaveData.current.currentLevel = currentLevel;
+            SerializationManager.Save("playerData", SaveData.current);
+        }
+    }
     
     //[Header("")]
     public int goldCoins {
@@ -39,6 +49,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI shopGoldText;
 
     private int _c;
+    private int _cl;
 
     private void Start()
     {

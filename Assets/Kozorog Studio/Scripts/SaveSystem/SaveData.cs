@@ -26,7 +26,7 @@ public class SaveData
     }
 
     public int currentGold;
-    public int currentLevel;
+    public int currentLevel = 1;
 
     public bool hasVIP;
     public bool hasNoAds;
