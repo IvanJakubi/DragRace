@@ -7,12 +7,16 @@ using UnityEngine.EventSystems;
 public class TabButton : MonoBehaviour, IPointerClickHandler
 {
     public TabGroup tabGroup;
-
     public Image background;
+
+    public TabGroupEnum tabEnum;
+
+    [SerializeField] UnlockSkinButton unlockSkinButton;
 
     public void OnPointerClick(PointerEventData eventData)
     {
         tabGroup.OnTabSelected(this);
+        unlockSkinButton.tabEnum = tabEnum;
     }
 
     // Start is called before the first frame update
@@ -20,11 +24,5 @@ public class TabButton : MonoBehaviour, IPointerClickHandler
     {
         background = GetComponent<Image>();
         tabGroup.Subscribe(this);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

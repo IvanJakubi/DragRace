@@ -9,6 +9,6 @@ public class DriverData : ScriptableObject
     public GameObject driverPrefab;
     public SkinRarity driverRarity;
     public DriverType driverType;
-    public Image unlockedDriver;
-    public Image lockedDriver;
+    public Sprite unlockedDriver;
+    public Sprite lockedDriver;
 }

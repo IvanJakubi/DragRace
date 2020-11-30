@@ -15,5 +15,5 @@ MonoBehaviour:
   driverPrefab: {fileID: 0}
   driverRarity: 2
   driverType: 20
-  unlockedDriver: {fileID: 0}
-  lockedDriver: {fileID: 0}
+  unlockedDriver: {fileID: 21300000, guid: 0b0ffe075155df34bac485b46e979ec9, type: 3}
+  lockedDriver: {fileID: 21300000, guid: 7339a00f62843b44992ce2a5051f276a, type: 3}

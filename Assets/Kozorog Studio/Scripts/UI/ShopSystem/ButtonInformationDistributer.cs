@@ -29,6 +29,7 @@ public class ButtonInformationDistributer : MonoBehaviour
         for (int i = 0; i < transform.childCount; i++)
         {
             buttonHolders[i].carData = carList.carList[i];
+            buttonHolders[i].unlockedSkin.PrepareCarButton();
         }
     }
 
@@ -37,6 +38,7 @@ public class ButtonInformationDistributer : MonoBehaviour
         for (int i = 0; i < transform.childCount; i++)
         {
             buttonHolders[i].driverData = driverList.driverList[i];
+            buttonHolders[i].unlockedSkin.PrepareDriverButton();
         }
     }
 }

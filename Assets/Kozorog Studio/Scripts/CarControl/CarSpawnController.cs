@@ -36,7 +36,7 @@ public class CarSpawnController : MonoBehaviour
         DestroyCar();
     }
 
-    private void SpawnCar()
+    public void SpawnCar()
     {
         for (int i = 0; i < carRarityList.Count; i++)
         {

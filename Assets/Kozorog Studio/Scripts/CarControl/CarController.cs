@@ -11,6 +11,7 @@ public class CarController : MonoBehaviour
     private const float minSpeedToGear = 0.8f;
 
     [SerializeField] Speedometer speedometer;
+    [SerializeField] ScriptableEvent onVibrate;
     #endregion
 
     #region Public Variables
@@ -179,9 +180,11 @@ public class CarController : MonoBehaviour
             else
             {
                 gear++;
-                currentSpeed = currentSpeed - (currentSpeed * loseSpeedOnGear[gear]);
+                float speedToLose = currentSpeed - (currentSpeed * loseSpeedOnGear[gear]);
+                currentSpeed = Mathf.Lerp(currentSpeed, speedToLose, 1f);
                 gearRaised = true;
                 SetGearChangeSuccess(GearChangeSuccess.Fail);
+                onVibrate.RaiseEvent(new EventMessage());
             }
         }
         

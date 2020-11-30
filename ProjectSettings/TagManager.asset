@@ -10,6 +10,8 @@ TagManager:
   - Outline
   - SkinImage
   - CarChildren
+  - CarTab
+  - DriverTab
   layers:
   - Default
   - TransparentFX

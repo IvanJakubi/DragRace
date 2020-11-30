@@ -58,11 +58,16 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
 
     public IEnumerator ShowBannerAd()
     {
-        while (!Advertisement.IsReady(bannerAd))
-            yield return null;
+        if (!SaveData.current.hasNoAds && !SaveData.current.hasVIP)
+        {
+            while (!Advertisement.IsReady(bannerAd))
+                yield return null;
 
-        Advertisement.Banner.SetPosition(BannerPosition.BOTTOM_CENTER);
-        Advertisement.Banner.Show(bannerAd);
+            Advertisement.Banner.SetPosition(BannerPosition.BOTTOM_CENTER);
+            Advertisement.Banner.Show(bannerAd);
+        }
+
+        yield return null;
     }
 
     public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)

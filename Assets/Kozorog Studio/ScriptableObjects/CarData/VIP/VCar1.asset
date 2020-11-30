@@ -15,3 +15,5 @@ MonoBehaviour:
   carPrefab: {fileID: 3100836847033971016, guid: 5a70537c05f98984f8cc22fcda78363b, type: 3}
   carRarity: 3
   carType: 24
+  unlockedCar: {fileID: 21300000, guid: 0b0ffe075155df34bac485b46e979ec9, type: 3}
+  lockedCar: {fileID: 21300000, guid: 7339a00f62843b44992ce2a5051f276a, type: 3}

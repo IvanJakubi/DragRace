@@ -15,6 +15,12 @@ public enum SkinRarity
     VIP
 }
 
+public enum TabGroupEnum
+{
+    Cars,
+    Drivers
+}
+
 [System.Serializable]
 public enum CarType
 {

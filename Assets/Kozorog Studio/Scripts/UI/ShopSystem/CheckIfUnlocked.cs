@@ -6,13 +6,12 @@ public class CheckIfUnlocked : MonoBehaviour
 {
     public UnlockedSkins isUnlocked;
 
-    private SkinButton skinButton;
+    public SkinButton skinButton;
 
     // Start is called before the first frame update
-    void Start()
+    public void PrepareCarButton()
     {
-        skinButton = GetComponent<SkinButton>();
-
+        //skinButton = GetComponent<SkinButton>();
         isUnlocked.carType = skinButton.carData.carType;
 
         if (SaveData.current.unlockedCars.Count == 0)
@@ -28,23 +27,65 @@ public class CheckIfUnlocked : MonoBehaviour
             isUnlocked.isUnlocked = 1;
         }
 
-        //if(SaveData.current.unlockedSkins.Contains(this.GetComponent<GameObject>()))
-        //{
-        //    isUnlocked.isUnlocked = 1;
-        //}
+        UnlockLockCarImage();
+    }
+
+    public void PrepareDriverButton()
+    {
+        isUnlocked.driverType = skinButton.driverData.driverType;
+
+        if (SaveData.current.unlockedDrivers.Count == 0)
+        {
+            if (isUnlocked.isUnlocked == 1)
+            {
+                SaveData.current.unlockedDrivers.Add(isUnlocked.driverType);
+            }
+        }
+
+        if (SaveData.current.unlockedDrivers.Contains(isUnlocked.driverType))
+        {
+            isUnlocked.isUnlocked = 1;
+        }
+
+        UnlockLockDriverImage();
     }
 
     // Update is called once per frame
-    public void AddToList()
+    public void AddCarToList()
     {
-        if (isUnlocked.isUnlocked == 1)
-            return;
-        else
-        {
-            isUnlocked.isUnlocked = 1;
-            SaveData.current.unlockedCars.Add(isUnlocked.carType);
-        }
+        SaveData.current.unlockedCars.Add(isUnlocked.carType);
+        
+        SerializationManager.Save("playerData", SaveData.current);
+    }
+
+    public void AddDriverToList()
+    {
+        SaveData.current.unlockedDrivers.Add(isUnlocked.driverType);
 
         SerializationManager.Save("playerData", SaveData.current);
+    }
+
+    public void UnlockLockCarImage()
+    {
+        if (isUnlocked.isUnlocked == 1)
+        {
+            //Set unlocked image here
+            skinButton.skinImage.sprite = skinButton.carData.unlockedCar;
+        }
+        else
+            //Set locked image here
+            skinButton.skinImage.sprite = skinButton.carData.lockedCar;
+    }
+
+    public void UnlockLockDriverImage()
+    {
+        if (isUnlocked.isUnlocked == 1)
+        {
+            //Set unlocked image here
+            skinButton.skinImage.sprite = skinButton.driverData.unlockedDriver;
+        }
+        else
+            //Set locked image here
+            skinButton.skinImage.sprite = skinButton.driverData.lockedDriver;
     }
 }

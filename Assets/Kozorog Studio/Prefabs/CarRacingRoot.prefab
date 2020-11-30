@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 149331882101188559}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!198 &679744601
 ParticleSystem:
@@ -14438,6 +14438,86 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!1 &1747451118668211076
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 724756359603423269}
+  - component: {fileID: 3101752570783070881}
+  - component: {fileID: 7031624471918452623}
+  m_Layer: 0
+  m_Name: Drivers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &724756359603423269
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1747451118668211076}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.68, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 149331882101188559}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3101752570783070881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1747451118668211076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e960245c95e35a49878771132a8759f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _eventListenerStructs:
+  - _scriptableEvent: {fileID: 11400000, guid: 5fae5b30c9dbf2240aa8e13590b0fa42, type: 2}
+    _messageUnityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: CarSpawnController, Assembly-CSharp
+          m_MethodName: CallSpawnCar
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &7031624471918452623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1747451118668211076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab1d8da974ac98345bb49eb0185f5644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  driverType: 0
+  driverRarity: 0
+  driverRarityList:
+  - {fileID: 11400000, guid: 62a0372673697154c81deaa09f159f59, type: 2}
+  - {fileID: 11400000, guid: dffba42958f28fb42afb65f02f24e76f, type: 2}
+  - {fileID: 11400000, guid: aea217d2b02c3aa4aac08aa3638829a9, type: 2}
+  - {fileID: 11400000, guid: 445f2ca72f4635b40b30101d19cde30f, type: 2}
 --- !u!1 &2477448418086168217
 GameObject:
   m_ObjectHideFlags: 0
@@ -14547,6 +14627,7 @@ MonoBehaviour:
   pathCreator: {fileID: 0}
   end: 2
   _dstTravelled: 0
+  pathLength: 0
   endReached: {fileID: 11400000, guid: ebdfe4d966492324389e5f1eed3236e7, type: 2}
 --- !u!114 &2172237797671215547
 MonoBehaviour:
@@ -14681,7 +14762,7 @@ Transform:
   - {fileID: 6482733158820420904}
   - {fileID: 3766172291870178583}
   m_Father: {fileID: 149331882101188559}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4406836373072354880
 GameObject:
@@ -14840,7 +14921,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 149331882101188559}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4790953154283476296
 GameObject:
@@ -19685,7 +19766,7 @@ Transform:
   - {fileID: 5790450785815632200}
   - {fileID: 3241996023774514712}
   m_Father: {fileID: 149331882101188559}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4906491531136051614
 GameObject:
@@ -19717,7 +19798,7 @@ Transform:
   - {fileID: 5487669516089668798}
   - {fileID: 8472756044851370411}
   m_Father: {fileID: 149331882101188559}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7012602388606908043
 GameObject:
@@ -19880,6 +19961,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 724756359603423269}
   - {fileID: 6241542709594852161}
   - {fileID: 679744599}
   - {fileID: 1004184405832858348}
@@ -19995,7 +20077,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 149331882101188559}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &350503315
 MonoBehaviour:

@@ -9,6 +9,6 @@ public class CarsData : ScriptableObject
     public GameObject carPrefab;
     public SkinRarity carRarity;
     public CarType carType;
-    public Image unlockedCar;
-    public Image lockedCar;
+    public Sprite unlockedCar;
+    public Sprite lockedCar;
 }

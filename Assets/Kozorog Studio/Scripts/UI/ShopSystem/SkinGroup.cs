@@ -11,7 +11,10 @@ public class SkinGroup : MonoBehaviour
 
     [SerializeField] ScriptableEvent spawnCar;
     [SerializeField] ScriptableEvent destroyCar;
+    [SerializeField] ScriptableEvent spawnDriver;
+    [SerializeField] ScriptableEvent destroyDriver;
     [SerializeField] CarSpawnController carSpawnController;
+    [SerializeField] DriverSpawnController driverSpawnController;
 
     public void Subscribe(SkinButton button)
     {
@@ -23,16 +26,29 @@ public class SkinGroup : MonoBehaviour
         skinButtons.Add(button);
     }
 
-    public void OnButtonSelected(SkinButton button)
+    public void OnCarButtonSelected(SkinButton button)
     {
         destroyCar.RaiseEvent(new EventMessage());
         selectedSkin = button;
         carSpawnController.carRarity = button.carData.carRarity;
         carSpawnController.carType = button.carData.carType;
         SaveData.current.currentCar = button.carData.carType;
-        spawnCar.RaiseEvent(new EventMessage());
+        carSpawnController.SpawnCar();
         ResetButtons();
-        button.background.color = tabActive;
+        button.outline.SetActive(true);
+        SerializationManager.Save("playerData", SaveData.current);
+    }
+
+    public void OnDriverButtonSelected(SkinButton button)
+    {
+        destroyDriver.RaiseEvent(new EventMessage());
+        selectedSkin = button;
+        driverSpawnController.driverRarity = button.driverData.driverRarity;
+        driverSpawnController.driverType = button.driverData.driverType;
+        SaveData.current.currentDriver = button.driverData.driverType;
+        driverSpawnController.SpawnDriver();
+        ResetButtons();
+        button.outline.SetActive(true);
         SerializationManager.Save("playerData", SaveData.current);
     }
 
@@ -41,7 +57,7 @@ public class SkinGroup : MonoBehaviour
         foreach (SkinButton button in skinButtons)
         {
             if (selectedSkin != null && button == selectedSkin) { continue; }
-            button.background.color = tabIdle;
+            button.outline.SetActive(false);
         }
     }
 }
