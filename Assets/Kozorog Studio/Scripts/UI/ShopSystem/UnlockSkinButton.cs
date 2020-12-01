@@ -1,13 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class UnlockSkinButton : MonoBehaviour
 {
     public TabGroupEnum tabEnum;
+    public int goldToSpend;
+    public TextMeshProUGUI spendText;
 
     [SerializeField] GameObject groupTransform;
 
+    [Header("")]
     [SerializeField] private List<CheckIfUnlocked> driverTypes;
     [SerializeField] private List<CheckIfUnlocked> carTypes;
 
@@ -21,6 +25,11 @@ public class UnlockSkinButton : MonoBehaviour
     [Range(0f, 1f)]
     [SerializeField] private float waitTransition = 0.3f;
 
+    [Header("")]
+    [SerializeField] GameManager gameManager;
+
+    private bool isUnlocking = false;
+
     private void Awake()
     {
         driverTypes = new List<CheckIfUnlocked>();
@@ -29,8 +38,15 @@ public class UnlockSkinButton : MonoBehaviour
 
     public void PopulateList()
     {
+        if (gameManager.goldCoins < goldToSpend || isUnlocking == true)
+        {
+            return;
+        }
+
+        isUnlocking = true;
         driverTypes.Clear();
         carTypes.Clear();
+        gameManager.goldCoins -= goldToSpend;
 
         carRandomUnlockList.Clear();
         driverRandomUnlockList.Clear();
@@ -113,6 +129,7 @@ public class UnlockSkinButton : MonoBehaviour
             }
         }
 
+        isUnlocking = false;
         yield return null;
     }
 
@@ -152,6 +169,7 @@ public class UnlockSkinButton : MonoBehaviour
             }
         }
 
+        isUnlocking = false;
         yield return null;
     }
 }

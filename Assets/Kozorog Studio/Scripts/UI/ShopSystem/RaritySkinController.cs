@@ -10,9 +10,17 @@ public class RaritySkinController : MonoBehaviour
     public SkinRarity skinRarity;
     public List<GameObject> showCarRarityIcons;
     public List<GameObject> showDriverRarityIcons;
+    public List<GameObject> selectionCircle;
 
+    [Header("")]
     [SerializeField] GameObject leftArrow, rightArrow;
     [SerializeField] TextMeshProUGUI rarityText;
+
+    [Header("")]
+    [SerializeField] GameObject buyWatch;
+    [SerializeField] GameObject openBoxes;
+    [SerializeField] GameObject vip;
+    [SerializeField] UnlockSkinButton unlockSkinButton;
 
     private int skinRarityMax;
 
@@ -52,9 +60,12 @@ public class RaritySkinController : MonoBehaviour
             obj.SetActive(false);
         foreach (GameObject obj in showDriverRarityIcons)
             obj.SetActive(false);
+        foreach (GameObject obj in selectionCircle)
+            obj.SetActive(false);
 
         showCarRarityIcons[skinRarityIndex].SetActive(true);
         showDriverRarityIcons[skinRarityIndex].SetActive(true);
+        selectionCircle[skinRarityIndex].SetActive(true);
 
         if (skinRarityIndex == 0)
             leftArrow.SetActive(false);
@@ -65,6 +76,34 @@ public class RaritySkinController : MonoBehaviour
             rightArrow.SetActive(false);
         else
             rightArrow.SetActive(true);
+
+        switch(skinRarityIndex)
+        {
+            case 0:
+                buyWatch.SetActive(true);
+                openBoxes.SetActive(false);
+                vip.SetActive(false);
+                unlockSkinButton.goldToSpend = 1000;
+                unlockSkinButton.spendText.text = unlockSkinButton.goldToSpend.ToString();
+                break;
+            case 1:
+                buyWatch.SetActive(true);
+                openBoxes.SetActive(false);
+                vip.SetActive(false);
+                unlockSkinButton.goldToSpend = 2000;
+                unlockSkinButton.spendText.text = unlockSkinButton.goldToSpend.ToString();
+                break;
+            case 2:
+                buyWatch.SetActive(false);
+                openBoxes.SetActive(true);
+                vip.SetActive(false);
+                break;
+            case 3:
+                buyWatch.SetActive(false);
+                openBoxes.SetActive(false);
+                vip.SetActive(true);
+                break;
+        }
 
     }
 }
